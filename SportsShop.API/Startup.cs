@@ -35,7 +35,6 @@ namespace SportsShop.API
       o.JsonSerializerOptions.MaxDepth = 1000;
       o.JsonSerializerOptions.IgnoreReadOnlyProperties = true;
   });
-            // services.AddDbContext<SportsShopDBContext>(options => options.UseSqlServer("Data Source=.;Initial Catalog=SportsShopDB;Trusted_Connection=True;"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
