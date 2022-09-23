@@ -9,21 +9,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SportsShop.API.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
     {
+        public const string SuccessStatus = "Success";
+        public const string FailedStatus = "Failed";
+
         [HttpGet]
         public IActionResult Get(int orderId)
         {
+            ApiResponse apiRes = new ApiResponse();
             ShopDBContext dbContext = new ShopDBContext();
             if (orderId > 0)
             {
                 var record = dbContext.TblOrders.Find(orderId);
-                return Ok(record);
+                apiRes.Result =  record;
+                apiRes.IsValid = true;
+                return Ok(apiRes);
             }
-            var res = dbContext.TblOrders.Include(p => p.Customer).Include(p => p.TblOrderedItems).ToList();
-            return Ok(res);
+            apiRes.ErrorMessage = $"{orderId}:Record Not Found";
+            apiRes.IsValid = false;
+            return Ok(apiRes);
         }
 
         [HttpPost]
@@ -96,17 +104,7 @@ namespace SportsShop.API.Controllers
 
         }
 
-        public class SelectedItems
-        {
-            public int CustomerId { get; set; }
-            public string OrderedAddress { get; set; }
-            public List<int> SelectedProducts { get; set; }
-        }
-
-        public class ApiResponse
-        {
-            public bool IsValid { get; set; }
-            public string StatusMessage { get; set; }
-        }
     }
+
+
 }

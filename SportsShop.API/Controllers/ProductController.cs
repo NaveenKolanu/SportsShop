@@ -63,30 +63,6 @@ namespace SportsShop.API.Controllers
             return Ok(dbState);
         }
 
-
-        public List<Product> GetDummyProducts()
-        {
-            Product product1 = new Product();
-            product1.ProductId = 101;
-            product1.ProductName = "Bat";
-            product1.ProductDescription = "Cricket Bat";
-            product1.ProductPrice = 2000;
-
-            Product product2 = new Product();
-            product2.ProductId = 102;
-            product2.ProductName = "Gurd";
-            product2.ProductDescription = "Cricket Gurd";
-            product2.ProductPrice = 599;
-
-            //List of Products
-            List<Product> lstProducts = new List<Product>();
-
-            lstProducts.Add(product1);
-            lstProducts.Add(product2);
-
-            return lstProducts;
-        }
-
     }
 
 

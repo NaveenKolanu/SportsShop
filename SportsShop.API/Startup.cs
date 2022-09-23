@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using SportsShop.API.Models;
 using System;
 using System.Collections.Generic;
@@ -28,13 +29,19 @@ namespace SportsShop.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers()
-  .AddJsonOptions(o =>
-  {
-      o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-      o.JsonSerializerOptions.MaxDepth = 1000;
-      o.JsonSerializerOptions.IgnoreReadOnlyProperties = true;
-  });
+            services.AddControllers();
+
+            //Swagger Integration
+            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Sports Shop API",
+                    Description = "API to expose Order, Product, Customer Management",
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +61,12 @@ namespace SportsShop.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            //Swagger Integration
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Showing API V1");
             });
         }
     }
