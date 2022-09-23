@@ -13,7 +13,24 @@ namespace SportsShop.API.Models
     }
 
     //Models-> ViewModels / DomainModels / BussinessModels
-   
+
+    public class OrderDetails
+    { 
+        public int OrderId { get; set; }
+        public int CustomerId { get; set; }
+        public string CustomerName { get; set; }
+        public List<ProductDetails> OrderedProducts { get; set; }
+    }
+
+    public class ProductDetails
+    { 
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
+        public decimal? ProductPrice { get; set; }
+        public string ProductColor { get; set; }
+        public string ProductSize { get; set; }
+    }
+
 
     public class SelectedItems
     {

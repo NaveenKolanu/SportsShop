@@ -24,8 +24,44 @@ namespace SportsShop.API.Controllers
             ShopDBContext dbContext = new ShopDBContext();
             if (orderId > 0)
             {
-                var record = dbContext.TblOrders.Find(orderId);
-                apiRes.Result =  record;
+                //Get Order info by OrderId
+                var dbOrder = dbContext.TblOrders.Find(orderId);
+
+                //Get Customer info by CustomerId
+                var dbCustomer = dbContext.TblCustomers.Find(dbOrder.CustomerId);
+
+                //Get Ordered Items associated with OrderId
+                var dbOrderedItems = dbContext.TblOrderedItems.Where(p => p.OrderId == orderId).ToList();
+               
+                //Get Complete Order Info
+                OrderDetails orderDeatails = new OrderDetails();
+                List<ProductDetails> itemsDetails = new List<ProductDetails>();
+                
+                orderDeatails.OrderId = dbOrder.OrderId;
+                orderDeatails.CustomerId = dbCustomer.CustomerId;
+                orderDeatails.CustomerName = dbCustomer.CustomerName;
+
+                foreach (var item in dbOrderedItems)
+                {
+                    //Get Product detail by ProductId
+                    var dbProduct = dbContext.TblProducts.Find(item.ProductId);
+                    
+                    ProductDetails product = new ProductDetails();
+                    product.ProductId = dbProduct.ProductId;
+                    product.ProductName = dbProduct.ProductName;
+                    product.ProductPrice = dbProduct.ProductPrice;
+
+                    product.ProductColor = dbProduct.ProductColor;
+                    product.ProductSize = dbProduct.ProductSize;
+                    
+                    //Add Product to OrderedProducts
+                    itemsDetails.Add(product);
+                }
+                
+                //Assign products
+                orderDeatails.OrderedProducts = itemsDetails;
+                
+                apiRes.Result = orderDeatails;
                 apiRes.IsValid = true;
                 return Ok(apiRes);
             }
