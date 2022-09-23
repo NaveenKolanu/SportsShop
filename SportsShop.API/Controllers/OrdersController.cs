@@ -54,11 +54,33 @@ namespace SportsShop.API.Controllers
         [HttpDelete]
         public IActionResult Delete(int orderId)
         {
+            ApiResponse apiResp = new ApiResponse();
+            
             ShopDBContext dbContext = new ShopDBContext();
-            var dbOrder = dbContext.TblOrders.Find(orderId);
-            dbContext.Remove(orderId);
-            var dbState = dbContext.SaveChanges();
-            return Ok(dbState);
+
+            //Get Child Record and Delete them first
+            var dbOrderedItems = dbContext.TblOrderedItems
+                .Where(p => p.OrderId == orderId).ToList();
+            if (dbOrderedItems != null && dbOrderedItems.Count > 0)
+            {
+                dbContext.RemoveRange(dbOrderedItems);
+                var dbStatus = dbContext.SaveChanges();
+                if (dbStatus > 0)
+                {
+                    //Get Master Record and Delete it now
+                    var dbOrder = dbContext.TblOrders.Find(orderId);
+                    dbContext.Remove(dbOrder);
+                    var dbState = dbContext.SaveChanges();
+                    apiResp.IsValid = true;
+                    apiResp.StatusMessage = "Success";
+
+                    return Ok(apiResp);
+                }
+            }
+            apiResp.IsValid = false;
+            apiResp.StatusMessage = "Failed";
+            return Ok(apiResp);
+
         }
 
         [HttpPut]
@@ -79,6 +101,12 @@ namespace SportsShop.API.Controllers
             public int CustomerId { get; set; }
             public string OrderedAddress { get; set; }
             public List<int> SelectedProducts { get; set; }
+        }
+
+        public class ApiResponse
+        {
+            public bool IsValid { get; set; }
+            public string StatusMessage { get; set; }
         }
     }
 }
