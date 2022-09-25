@@ -14,8 +14,8 @@ namespace SportsShop.API.Controllers
     [ApiController]
     public class OrdersController : ControllerBase
     {
-        public const string SuccessStatus = "Success";
-        public const string FailedStatus = "Failed";
+        //public const string SuccessStatus = "Success";
+        //public const string FailedStatus = "Failed";
 
         [HttpGet]
         public IActionResult Get(int orderId)
@@ -73,10 +73,17 @@ namespace SportsShop.API.Controllers
         [HttpPost]
         public IActionResult Post(SelectedItems items)
         {
+            ApiResponse apiRes = new ApiResponse();
             ShopDBContext dbContext = new ShopDBContext();
             TblOrder tblOrder = new TblOrder();
             var customer = dbContext.TblCustomers.Find(items.CustomerId);
-            tblOrder.CustomerId = customer.CustomerId;
+            if (customer==null)
+            {
+                apiRes.IsValid = false;
+                apiRes.ErrorMessage = "Customer not found";
+                return Ok(apiRes);
+            }
+            tblOrder.CustomerId = customer.CustomerId; 
             tblOrder.OrderAddress = items.OrderedAddress;
             dbContext.Add(tblOrder);
             dbContext.SaveChanges();
@@ -84,6 +91,12 @@ namespace SportsShop.API.Controllers
             foreach (var prodId in items.SelectedProducts)
             {
                 var product = dbContext.TblProducts.Find(prodId);
+                if(product==null)
+                {
+                    apiRes.IsValid = false;
+                    apiRes.ErrorMessage = "Product not found";
+                    return Ok(apiRes);
+                }
                 TblOrderedItem tblOrderedItem = new TblOrderedItem();
                 tblOrderedItem.OrderId = tblOrder.OrderId;
                 tblOrderedItem.ProductId = product.ProductId;
@@ -91,8 +104,9 @@ namespace SportsShop.API.Controllers
                 dbContext.Add(tblOrderedItem);
             }
             //Save all items
-            var dbState = dbContext.SaveChanges();
-            return Ok(dbState);
+            apiRes.IsValid = true;
+            apiRes.Result = dbContext.SaveChanges();
+            return Ok(apiRes);
         }
 
         [HttpDelete]
@@ -130,13 +144,23 @@ namespace SportsShop.API.Controllers
         [HttpPut]
         public IActionResult Put(TblOrder tblOrder)
         {
+            ApiResponse apiRes = new ApiResponse();
             ShopDBContext dbContext = new ShopDBContext();
             var dbOrder = dbContext.TblOrders.Find(tblOrder.OrderId);
+            if (dbOrder == null) 
+            {
+                apiRes.IsValid = false;
+                apiRes.ErrorMessage = "Order not found";
+                return Ok(apiRes);
+            }
             dbOrder.CustomerId = tblOrder.CustomerId;
             dbOrder.OrderAddress = tblOrder.OrderAddress;
             dbContext.Update(dbOrder);
-            var dbState = dbContext.SaveChanges();
-            return Ok(dbState);
+            apiRes.IsValid = true;
+            apiRes.Result = dbContext.SaveChanges();
+            return Ok(apiRes);
+            //var dbState = dbContext.SaveChanges();
+            //return Ok(dbState);
 
         }
 
