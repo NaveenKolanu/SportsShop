@@ -34,8 +34,8 @@ namespace SportsShop.API.Controllers
                 var dbOrderedItems = dbContext.TblOrderedItems.Where(p => p.OrderId == orderId).ToList();
                
                 //Get Complete Order Info
-                OrderDetails orderDeatails = new OrderDetails();
-                List<ProductDetails> itemsDetails = new List<ProductDetails>();
+                OrderDetailsViewModel orderDeatails = new OrderDetailsViewModel();
+                List<ProductViewModel> itemsDetails = new List<ProductViewModel>();
                 
                 orderDeatails.OrderId = dbOrder.OrderId;
                 orderDeatails.CustomerId = dbCustomer.CustomerId;
@@ -46,7 +46,7 @@ namespace SportsShop.API.Controllers
                     //Get Product detail by ProductId
                     var dbProduct = dbContext.TblProducts.Find(item.ProductId);
                     
-                    ProductDetails product = new ProductDetails();
+                    ProductViewModel product = new ProductViewModel();
                     product.ProductId = dbProduct.ProductId;
                     product.ProductName = dbProduct.ProductName;
                     product.ProductPrice = dbProduct.ProductPrice;

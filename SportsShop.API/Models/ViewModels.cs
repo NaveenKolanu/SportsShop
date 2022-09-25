@@ -14,15 +14,15 @@ namespace SportsShop.API.Models
 
     //Models-> ViewModels / DomainModels / BussinessModels
 
-    public class OrderDetails
+    public class OrderDetailsViewModel
     { 
         public int OrderId { get; set; }
         public int CustomerId { get; set; }
         public string CustomerName { get; set; }
-        public List<ProductDetails> OrderedProducts { get; set; }
+        public List<ProductViewModel> OrderedProducts { get; set; }
     }
 
-    public class ProductDetails
+    public class ProductViewModel
     { 
         public int ProductId { get; set; }
         public string ProductName { get; set; }
