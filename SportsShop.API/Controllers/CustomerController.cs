@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SportsShop.API.Models;
+using Microsoft.Extensions.Logging;
 
 namespace SportsShop.API.Controllers
 {
@@ -12,19 +13,30 @@ namespace SportsShop.API.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
+
+        private readonly ILogger<CustomerController> logger;
+
+        public CustomerController(ILogger<CustomerController> _logger)
+        {
+            logger = _logger;
+        }
+
         [HttpGet]
         public IActionResult Get(int? customerId)
         {
+            logger.LogInformation("Get customer by id is commenced at :",DateTime.UtcNow);
+                //DateTime.UtcNow.ToLongTimeString());
             List<CustomerViewModel> vmCustomers = new List<CustomerViewModel>();
             ApiResponse apiRes = new ApiResponse();
             ShopDBContext dbContext = new ShopDBContext();
             if (customerId > 0)
             {
-
+                logger.LogInformation("Customer Id is given as :{customerId}", customerId);
                 var dbCustomer = dbContext.TblCustomers.Find(customerId);
 
                 if(dbCustomer==null)
                 {
+                    logger.LogError("Customer not found in dbContext with id : ", customerId);
                     apiRes.IsValid = false;
                     apiRes.ErrorMessage = "invalid Customer Id";
                     return Ok(apiRes);
@@ -37,6 +49,8 @@ namespace SportsShop.API.Controllers
                
                 apiRes.IsValid = true;
                 apiRes.Result=customerView;
+                logger.LogInformation("Customer Id is given and customer " +
+                    "is returned with id :", customerId.ToString());
                 return Ok(apiRes);
             }
             var dbCustomers = dbContext.TblCustomers.ToList();
