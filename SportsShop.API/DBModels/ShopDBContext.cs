@@ -8,14 +8,16 @@ namespace SportsShop.API.Models
 {
     public partial class ShopDBContext : DbContext
     {
+
+        public ShopDBContext(DbContextOptions<ShopDBContext> options)
+           : base(options)
+        {
+        }
         public ShopDBContext()
         {
         }
 
-        public ShopDBContext(DbContextOptions<ShopDBContext> options)
-            : base(options)
-        {
-        }
+      
 
         public virtual DbSet<TblCustomer> TblCustomers { get; set; }
         public virtual DbSet<TblOrder> TblOrders { get; set; }

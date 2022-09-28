@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SportsShop.API.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace SportsShop.API.Controllers
 {
@@ -16,10 +17,18 @@ namespace SportsShop.API.Controllers
     {
         //public const string SuccessStatus = "Success";
         //public const string FailedStatus = "Failed";
+        private readonly ILogger<OrdersController> logger;
+
+        public OrdersController(ILogger<OrdersController> _logger)
+        {
+            logger = _logger;
+        }
 
         [HttpGet]
         public IActionResult Get(int orderId)
         {
+            logger.LogInformation("Get method executed in OrdersController with id : {orderId} at {DT}",
+                orderId.ToString(), DateTime.UtcNow.ToString());
             ApiResponse apiRes = new ApiResponse();
             ShopDBContext dbContext = new ShopDBContext();
             if (orderId > 0)
@@ -63,16 +72,19 @@ namespace SportsShop.API.Controllers
                 
                 apiRes.Result = orderDeatails;
                 apiRes.IsValid = true;
+                logger.LogInformation("Order details executed successfully and returned with ");
                 return Ok(apiRes);
             }
             apiRes.ErrorMessage = $"{orderId}:Record Not Found";
             apiRes.IsValid = false;
+            logger.LogError("OrderId not found, id : {orderId}", orderId.ToString());
             return Ok(apiRes);
         }
 
         [HttpPost]
         public IActionResult Post(SelectedItems items)
         {
+            logger.LogInformation("OrderController, post method initiated at {DT}",DateTime.UtcNow.ToString());
             ApiResponse apiRes = new ApiResponse();
             ShopDBContext dbContext = new ShopDBContext();
             TblOrder tblOrder = new TblOrder();
@@ -81,6 +93,7 @@ namespace SportsShop.API.Controllers
             {
                 apiRes.IsValid = false;
                 apiRes.ErrorMessage = "Customer not found";
+                logger.LogError("Customer with id : {items.CustomerId}, not found", items.CustomerId.ToString());
                 return Ok(apiRes);
             }
             tblOrder.CustomerId = customer.CustomerId; 
@@ -106,12 +119,15 @@ namespace SportsShop.API.Controllers
             //Save all items
             apiRes.IsValid = true;
             apiRes.Result = dbContext.SaveChanges();
+            logger.LogInformation("Information posted successfully " +
+                "from Ordercontroller post method at {DT}",DateTime.UtcNow.ToString());
             return Ok(apiRes);
         }
 
         [HttpDelete]
         public IActionResult Delete(int orderId)
         {
+            logger.LogInformation(" OrdersController,Delete method initiated");
             ApiResponse apiResp = new ApiResponse();
             
             ShopDBContext dbContext = new ShopDBContext();
@@ -123,6 +139,8 @@ namespace SportsShop.API.Controllers
             {
                 dbContext.RemoveRange(dbOrderedItems);
                 var dbStatus = dbContext.SaveChanges();
+                logger.LogInformation("Child records with id's {dbOrderedItems} " +
+                    "of orderid {orderId} deleted", dbOrderedItems.ToString(), orderId.ToString());
                 if (dbStatus > 0)
                 {
                     //Get Master Record and Delete it now
@@ -131,12 +149,15 @@ namespace SportsShop.API.Controllers
                     var dbState = dbContext.SaveChanges();
                     apiResp.IsValid = true;
                     apiResp.StatusMessage = "Success";
+                    logger.LogInformation("OrderId {orderId} successfully deleted at {DT}", orderId.ToString(),
+                        DateTime.UtcNow.ToString());
 
                     return Ok(apiResp);
                 }
             }
             apiResp.IsValid = false;
             apiResp.StatusMessage = "Failed";
+            logger.LogError("Order id {orderId} to delete, not found", orderId.ToString());
             return Ok(apiResp);
 
         }
@@ -144,6 +165,7 @@ namespace SportsShop.API.Controllers
         [HttpPut]
         public IActionResult Put(TblOrder tblOrder)
         {
+            logger.LogInformation("OrdersController put method initiated");
             ApiResponse apiRes = new ApiResponse();
             ShopDBContext dbContext = new ShopDBContext();
             var dbOrder = dbContext.TblOrders.Find(tblOrder.OrderId);
@@ -151,6 +173,7 @@ namespace SportsShop.API.Controllers
             {
                 apiRes.IsValid = false;
                 apiRes.ErrorMessage = "Order not found";
+                logger.LogError("OrderId with id {OrderId} not found in Ordertable", tblOrder.OrderId.ToString());
                 return Ok(apiRes);
             }
             dbOrder.CustomerId = tblOrder.CustomerId;
@@ -158,6 +181,7 @@ namespace SportsShop.API.Controllers
             dbContext.Update(dbOrder);
             apiRes.IsValid = true;
             apiRes.Result = dbContext.SaveChanges();
+            logger.LogInformation("OrderCOntroller put method successfully executed");
             return Ok(apiRes);
             //var dbState = dbContext.SaveChanges();
             //return Ok(dbState);

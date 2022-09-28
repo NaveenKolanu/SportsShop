@@ -106,3 +106,210 @@
 2022-09-27 18:54:55.389 +05:30 [INF] Executed action SportsShop.API.Controllers.CustomerController.Get (SportsShop.API) in 117.6601ms
 2022-09-27 18:54:55.390 +05:30 [INF] Executed endpoint 'SportsShop.API.Controllers.CustomerController.Get (SportsShop.API)'
 2022-09-27 18:54:55.390 +05:30 [INF] Request finished in 125.2884ms 200 application/json; charset=utf-8
+2022-09-27 19:15:56.162 +05:30 [DBG] Hosting starting
+2022-09-27 19:15:56.583 +05:30 [DBG] Loaded hosting startup assembly SportsShop.API
+2022-09-27 19:15:56.585 +05:30 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2022-09-27 19:15:56.586 +05:30 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2022-09-27 19:15:56.597 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-27 19:15:56.598 +05:30 [INF] Hosting environment: Development
+2022-09-27 19:15:56.598 +05:30 [INF] Content root path: C:\Users\HQ619GP\Source\Repos\NaveenKolanu\SportsShop\SportsShop.API
+2022-09-27 19:15:56.598 +05:30 [DBG] Hosting started
+2022-09-27 19:15:56.628 +05:30 [DBG] Connection ID "17942340929939570691" disconnecting.
+2022-09-27 19:15:56.641 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/weatherforecast  
+2022-09-27 19:15:56.641 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/swagger/index.html  
+2022-09-27 19:15:56.686 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-09-27 19:15:56.686 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-09-27 19:15:56.721 +05:30 [DBG] No candidates found for the request path '/swagger/index.html'
+2022-09-27 19:15:56.721 +05:30 [DBG] Request did not match any endpoints
+2022-09-27 19:15:56.725 +05:30 [DBG] 1 candidate(s) found for the request path '/weatherforecast'
+2022-09-27 19:15:56.731 +05:30 [DBG] Endpoint 'SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API)' with route pattern 'WeatherForecast' is valid for the request path '/weatherforecast'
+2022-09-27 19:15:56.731 +05:30 [DBG] Request matched endpoint 'SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API)'
+2022-09-27 19:15:56.732 +05:30 [INF] Executing endpoint 'SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API)'
+2022-09-27 19:15:56.740 +05:30 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider"]
+2022-09-27 19:15:56.760 +05:30 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[SportsShop.API.WeatherForecast] Get() on controller SportsShop.API.Controllers.WeatherForecastController (SportsShop.API).
+2022-09-27 19:15:56.765 +05:30 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-09-27 19:15:56.765 +05:30 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-09-27 19:15:56.765 +05:30 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-09-27 19:15:56.765 +05:30 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-09-27 19:15:56.765 +05:30 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-09-27 19:15:56.766 +05:30 [DBG] Executing controller factory for controller SportsShop.API.Controllers.WeatherForecastController (SportsShop.API)
+2022-09-27 19:15:56.767 +05:30 [DBG] Executed controller factory for controller SportsShop.API.Controllers.WeatherForecastController (SportsShop.API)
+2022-09-27 19:15:56.771 +05:30 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2022-09-27 19:15:56.773 +05:30 [DBG] No information found on request to perform content negotiation.
+2022-09-27 19:15:56.774 +05:30 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2022-09-27 19:15:56.774 +05:30 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2022-09-27 19:15:56.774 +05:30 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2022-09-27 19:15:56.775 +05:30 [INF] Executing ObjectResult, writing value of type 'SportsShop.API.WeatherForecast[]'.
+2022-09-27 19:15:56.841 +05:30 [INF] Executed action SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API) in 72.1359ms
+2022-09-27 19:15:56.842 +05:30 [INF] Executed endpoint 'SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API)'
+2022-09-27 19:15:56.843 +05:30 [DBG] Response markup is scheduled to include browser refresh script injection.
+2022-09-27 19:15:56.846 +05:30 [INF] Request finished in 208.9544ms 200 application/json; charset=utf-8
+2022-09-27 19:15:57.004 +05:30 [DBG] Response markup was updated to include browser refresh script injection.
+2022-09-27 19:15:57.007 +05:30 [INF] Request finished in 370.3753ms 200 text/html;charset=utf-8
+2022-09-27 19:15:57.028 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/_framework/aspnetcore-browser-refresh.js  
+2022-09-27 19:15:57.033 +05:30 [INF] Request finished in 5.0782ms 200 application/javascript; charset=utf-8
+2022-09-27 19:15:57.092 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/_framework/aspnetcore-browser-refresh.js  
+2022-09-27 19:15:57.093 +05:30 [INF] Request finished in 0.9168ms 200 application/javascript; charset=utf-8
+2022-09-27 19:15:57.095 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/_vs/browserLink  
+2022-09-27 19:15:57.137 +05:30 [INF] Request finished in 42.3955ms 200 text/javascript; charset=UTF-8
+2022-09-27 19:15:57.273 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/swagger/v1/swagger.json  
+2022-09-27 19:15:57.274 +05:30 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2022-09-27 19:15:57.274 +05:30 [DBG] Request did not match any endpoints
+2022-09-27 19:15:57.373 +05:30 [INF] Request finished in 99.8781ms 200 application/json;charset=utf-8
+2022-09-27 19:16:05.893 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/api/Customer?customerId=2  
+2022-09-27 19:16:05.898 +05:30 [DBG] 1 candidate(s) found for the request path '/api/Customer'
+2022-09-27 19:16:05.899 +05:30 [DBG] Endpoint 'SportsShop.API.Controllers.CustomerController.Get (SportsShop.API)' with route pattern 'api/Customer' is valid for the request path '/api/Customer'
+2022-09-27 19:16:05.899 +05:30 [DBG] Request matched endpoint 'SportsShop.API.Controllers.CustomerController.Get (SportsShop.API)'
+2022-09-27 19:16:05.899 +05:30 [INF] Executing endpoint 'SportsShop.API.Controllers.CustomerController.Get (SportsShop.API)'
+2022-09-27 19:16:05.912 +05:30 [INF] Route matched with {action = "Get", controller = "Customer"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(System.Nullable`1[System.Int32]) on controller SportsShop.API.Controllers.CustomerController (SportsShop.API).
+2022-09-27 19:16:05.912 +05:30 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-09-27 19:16:05.912 +05:30 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-09-27 19:16:05.912 +05:30 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-09-27 19:16:05.912 +05:30 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-09-27 19:16:05.912 +05:30 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-09-27 19:16:05.913 +05:30 [DBG] Executing controller factory for controller SportsShop.API.Controllers.CustomerController (SportsShop.API)
+2022-09-27 19:16:05.913 +05:30 [DBG] Executed controller factory for controller SportsShop.API.Controllers.CustomerController (SportsShop.API)
+2022-09-27 19:16:05.917 +05:30 [DBG] Attempting to bind parameter 'customerId' of type 'System.Nullable`1[System.Int32]' ...
+2022-09-27 19:16:05.921 +05:30 [DBG] Attempting to bind parameter 'customerId' of type 'System.Nullable`1[System.Int32]' using the name 'customerId' in request data ...
+2022-09-27 19:16:05.921 +05:30 [DBG] Done attempting to bind parameter 'customerId' of type 'System.Nullable`1[System.Int32]'.
+2022-09-27 19:16:05.921 +05:30 [DBG] Done attempting to bind parameter 'customerId' of type 'System.Nullable`1[System.Int32]'.
+2022-09-27 19:16:05.921 +05:30 [DBG] Attempting to validate the bound parameter 'customerId' of type 'System.Nullable`1[System.Int32]' ...
+2022-09-27 19:16:05.923 +05:30 [DBG] Done attempting to validate the bound parameter 'customerId' of type 'System.Nullable`1[System.Int32]'.
+2022-09-27 19:16:05.925 +05:30 [INF] Get customer by id is commenced at :
+2022-09-27 19:16:05.993 +05:30 [INF] Customer Id is given as :2
+2022-09-27 19:20:24.476 +05:30 [DBG] Hosting starting
+2022-09-27 19:20:25.011 +05:30 [DBG] Loaded hosting startup assembly SportsShop.API
+2022-09-27 19:20:25.012 +05:30 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2022-09-27 19:20:25.012 +05:30 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2022-09-27 19:20:25.013 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-27 19:20:25.013 +05:30 [INF] Hosting environment: Development
+2022-09-27 19:20:25.013 +05:30 [INF] Content root path: C:\Users\HQ619GP\Source\Repos\NaveenKolanu\SportsShop\SportsShop.API
+2022-09-27 19:20:25.014 +05:30 [DBG] Hosting started
+2022-09-27 19:20:25.055 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/weatherforecast  
+2022-09-27 19:20:25.090 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-09-27 19:20:25.114 +05:30 [DBG] 1 candidate(s) found for the request path '/weatherforecast'
+2022-09-27 19:20:25.119 +05:30 [DBG] Endpoint 'SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API)' with route pattern 'WeatherForecast' is valid for the request path '/weatherforecast'
+2022-09-27 19:20:25.124 +05:30 [DBG] Request matched endpoint 'SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API)'
+2022-09-27 19:20:25.125 +05:30 [INF] Executing endpoint 'SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API)'
+2022-09-27 19:20:25.130 +05:30 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider"]
+2022-09-27 19:20:25.154 +05:30 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[SportsShop.API.WeatherForecast] Get() on controller SportsShop.API.Controllers.WeatherForecastController (SportsShop.API).
+2022-09-27 19:20:25.159 +05:30 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-09-27 19:20:25.159 +05:30 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-09-27 19:20:25.160 +05:30 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-09-27 19:20:25.160 +05:30 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-09-27 19:20:25.160 +05:30 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-09-27 19:20:25.160 +05:30 [DBG] Executing controller factory for controller SportsShop.API.Controllers.WeatherForecastController (SportsShop.API)
+2022-09-27 19:20:25.161 +05:30 [DBG] Executed controller factory for controller SportsShop.API.Controllers.WeatherForecastController (SportsShop.API)
+2022-09-27 19:20:25.165 +05:30 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2022-09-27 19:20:25.167 +05:30 [DBG] No information found on request to perform content negotiation.
+2022-09-27 19:20:25.167 +05:30 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2022-09-27 19:20:25.167 +05:30 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2022-09-27 19:20:25.168 +05:30 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2022-09-27 19:20:25.168 +05:30 [INF] Executing ObjectResult, writing value of type 'SportsShop.API.WeatherForecast[]'.
+2022-09-27 19:20:25.276 +05:30 [INF] Executed action SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API) in 113.8138ms
+2022-09-27 19:20:25.277 +05:30 [INF] Executed endpoint 'SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API)'
+2022-09-27 19:20:25.281 +05:30 [INF] Request finished in 231.1044ms 200 application/json; charset=utf-8
+2022-09-27 19:20:29.173 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/swagger/index.html  
+2022-09-27 19:20:29.179 +05:30 [DBG] No candidates found for the request path '/swagger/index.html'
+2022-09-27 19:20:29.179 +05:30 [DBG] Request did not match any endpoints
+2022-09-27 19:20:29.237 +05:30 [DBG] Response markup is scheduled to include browser refresh script injection.
+2022-09-27 19:20:29.353 +05:30 [DBG] Response markup was updated to include browser refresh script injection.
+2022-09-27 19:20:29.354 +05:30 [INF] Request finished in 181.1508ms 200 text/html;charset=utf-8
+2022-09-27 19:20:29.373 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/_framework/aspnetcore-browser-refresh.js  
+2022-09-27 19:20:29.377 +05:30 [INF] Request finished in 3.4113ms 200 application/javascript; charset=utf-8
+2022-09-27 19:20:29.432 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/_vs/browserLink  
+2022-09-27 19:20:29.470 +05:30 [INF] Request finished in 37.5481ms 200 text/javascript; charset=UTF-8
+2022-09-27 19:20:29.558 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/swagger/v1/swagger.json  
+2022-09-27 19:20:29.558 +05:30 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2022-09-27 19:20:29.558 +05:30 [DBG] Request did not match any endpoints
+2022-09-27 19:20:29.638 +05:30 [INF] Request finished in 80.1043ms 200 application/json;charset=utf-8
+2022-09-27 19:20:37.680 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/api/Customer?customerId=1  
+2022-09-27 19:20:37.683 +05:30 [DBG] 1 candidate(s) found for the request path '/api/Customer'
+2022-09-27 19:20:37.684 +05:30 [DBG] Endpoint 'SportsShop.API.Controllers.CustomerController.Get (SportsShop.API)' with route pattern 'api/Customer' is valid for the request path '/api/Customer'
+2022-09-27 19:20:37.684 +05:30 [DBG] Request matched endpoint 'SportsShop.API.Controllers.CustomerController.Get (SportsShop.API)'
+2022-09-27 19:20:37.684 +05:30 [INF] Executing endpoint 'SportsShop.API.Controllers.CustomerController.Get (SportsShop.API)'
+2022-09-27 19:20:37.698 +05:30 [INF] Route matched with {action = "Get", controller = "Customer"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(System.Nullable`1[System.Int32]) on controller SportsShop.API.Controllers.CustomerController (SportsShop.API).
+2022-09-27 19:20:37.698 +05:30 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-09-27 19:20:37.698 +05:30 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-09-27 19:20:37.698 +05:30 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-09-27 19:20:37.698 +05:30 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-09-27 19:20:37.698 +05:30 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-09-27 19:20:37.698 +05:30 [DBG] Executing controller factory for controller SportsShop.API.Controllers.CustomerController (SportsShop.API)
+2022-09-27 19:20:37.698 +05:30 [DBG] Executed controller factory for controller SportsShop.API.Controllers.CustomerController (SportsShop.API)
+2022-09-27 19:20:37.704 +05:30 [DBG] Attempting to bind parameter 'customerId' of type 'System.Nullable`1[System.Int32]' ...
+2022-09-27 19:20:37.706 +05:30 [DBG] Attempting to bind parameter 'customerId' of type 'System.Nullable`1[System.Int32]' using the name 'customerId' in request data ...
+2022-09-27 19:20:37.706 +05:30 [DBG] Done attempting to bind parameter 'customerId' of type 'System.Nullable`1[System.Int32]'.
+2022-09-27 19:20:37.706 +05:30 [DBG] Done attempting to bind parameter 'customerId' of type 'System.Nullable`1[System.Int32]'.
+2022-09-27 19:20:37.706 +05:30 [DBG] Attempting to validate the bound parameter 'customerId' of type 'System.Nullable`1[System.Int32]' ...
+2022-09-27 19:20:37.707 +05:30 [DBG] Done attempting to validate the bound parameter 'customerId' of type 'System.Nullable`1[System.Int32]'.
+2022-09-27 19:20:37.708 +05:30 [INF] Get customer by id is commenced at :
+2022-09-27 19:20:37.787 +05:30 [INF] Customer Id is given as :1
+2022-09-27 19:25:03.734 +05:30 [DBG] Hosting starting
+2022-09-27 19:25:04.259 +05:30 [DBG] Loaded hosting startup assembly SportsShop.API
+2022-09-27 19:25:04.259 +05:30 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2022-09-27 19:25:04.259 +05:30 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2022-09-27 19:25:04.260 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-27 19:25:04.260 +05:30 [INF] Hosting environment: Development
+2022-09-27 19:25:04.260 +05:30 [INF] Content root path: C:\Users\HQ619GP\Source\Repos\NaveenKolanu\SportsShop\SportsShop.API
+2022-09-27 19:25:04.260 +05:30 [DBG] Hosting started
+2022-09-27 19:25:04.308 +05:30 [DBG] Connection ID "17942340929939570695" disconnecting.
+2022-09-27 19:25:04.321 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/swagger/index.html  
+2022-09-27 19:25:04.321 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/weatherforecast  
+2022-09-27 19:25:04.363 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-09-27 19:25:04.364 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-09-27 19:25:04.389 +05:30 [DBG] No candidates found for the request path '/swagger/index.html'
+2022-09-27 19:25:04.389 +05:30 [DBG] Request did not match any endpoints
+2022-09-27 19:25:04.393 +05:30 [DBG] 1 candidate(s) found for the request path '/weatherforecast'
+2022-09-27 19:25:04.397 +05:30 [DBG] Endpoint 'SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API)' with route pattern 'WeatherForecast' is valid for the request path '/weatherforecast'
+2022-09-27 19:25:04.397 +05:30 [DBG] Request matched endpoint 'SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API)'
+2022-09-27 19:25:04.398 +05:30 [INF] Executing endpoint 'SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API)'
+2022-09-27 19:25:04.406 +05:30 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider"]
+2022-09-27 19:25:04.429 +05:30 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[SportsShop.API.WeatherForecast] Get() on controller SportsShop.API.Controllers.WeatherForecastController (SportsShop.API).
+2022-09-27 19:25:04.433 +05:30 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-09-27 19:25:04.433 +05:30 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-09-27 19:25:04.434 +05:30 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-09-27 19:25:04.434 +05:30 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-09-27 19:25:04.434 +05:30 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-09-27 19:25:04.435 +05:30 [DBG] Executing controller factory for controller SportsShop.API.Controllers.WeatherForecastController (SportsShop.API)
+2022-09-27 19:25:04.436 +05:30 [DBG] Executed controller factory for controller SportsShop.API.Controllers.WeatherForecastController (SportsShop.API)
+2022-09-27 19:25:04.438 +05:30 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2022-09-27 19:25:04.440 +05:30 [DBG] No information found on request to perform content negotiation.
+2022-09-27 19:25:04.440 +05:30 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2022-09-27 19:25:04.440 +05:30 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2022-09-27 19:25:04.440 +05:30 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2022-09-27 19:25:04.441 +05:30 [INF] Executing ObjectResult, writing value of type 'SportsShop.API.WeatherForecast[]'.
+2022-09-27 19:25:04.506 +05:30 [INF] Executed action SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API) in 68.1005ms
+2022-09-27 19:25:04.507 +05:30 [INF] Executed endpoint 'SportsShop.API.Controllers.WeatherForecastController.Get (SportsShop.API)'
+2022-09-27 19:25:04.507 +05:30 [DBG] Response markup is scheduled to include browser refresh script injection.
+2022-09-27 19:25:04.512 +05:30 [INF] Request finished in 195.6904ms 200 application/json; charset=utf-8
+2022-09-27 19:25:04.657 +05:30 [DBG] Response markup was updated to include browser refresh script injection.
+2022-09-27 19:25:04.659 +05:30 [INF] Request finished in 343.4918ms 200 text/html;charset=utf-8
+2022-09-27 19:25:04.677 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/_framework/aspnetcore-browser-refresh.js  
+2022-09-27 19:25:04.681 +05:30 [INF] Request finished in 3.7252ms 200 application/javascript; charset=utf-8
+2022-09-27 19:25:04.729 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/_vs/browserLink  
+2022-09-27 19:25:04.764 +05:30 [INF] Request finished in 34.962ms 200 text/javascript; charset=UTF-8
+2022-09-27 19:25:04.887 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/swagger/v1/swagger.json  
+2022-09-27 19:25:04.889 +05:30 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2022-09-27 19:25:04.889 +05:30 [DBG] Request did not match any endpoints
+2022-09-27 19:25:04.983 +05:30 [INF] Request finished in 95.8677ms 200 application/json;charset=utf-8
+2022-09-27 19:25:12.883 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44325/api/Customer?customerId=2  
+2022-09-27 19:25:12.887 +05:30 [DBG] 1 candidate(s) found for the request path '/api/Customer'
+2022-09-27 19:25:12.887 +05:30 [DBG] Endpoint 'SportsShop.API.Controllers.CustomerController.Get (SportsShop.API)' with route pattern 'api/Customer' is valid for the request path '/api/Customer'
+2022-09-27 19:25:12.887 +05:30 [DBG] Request matched endpoint 'SportsShop.API.Controllers.CustomerController.Get (SportsShop.API)'
+2022-09-27 19:25:12.887 +05:30 [INF] Executing endpoint 'SportsShop.API.Controllers.CustomerController.Get (SportsShop.API)'
+2022-09-27 19:25:12.902 +05:30 [INF] Route matched with {action = "Get", controller = "Customer"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(System.Nullable`1[System.Int32]) on controller SportsShop.API.Controllers.CustomerController (SportsShop.API).
+2022-09-27 19:25:12.902 +05:30 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-09-27 19:25:12.902 +05:30 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-09-27 19:25:12.902 +05:30 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-09-27 19:25:12.902 +05:30 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-09-27 19:25:12.902 +05:30 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-09-27 19:25:12.902 +05:30 [DBG] Executing controller factory for controller SportsShop.API.Controllers.CustomerController (SportsShop.API)
+2022-09-27 19:25:12.903 +05:30 [DBG] Executed controller factory for controller SportsShop.API.Controllers.CustomerController (SportsShop.API)
+2022-09-27 19:25:12.907 +05:30 [DBG] Attempting to bind parameter 'customerId' of type 'System.Nullable`1[System.Int32]' ...
+2022-09-27 19:25:12.909 +05:30 [DBG] Attempting to bind parameter 'customerId' of type 'System.Nullable`1[System.Int32]' using the name 'customerId' in request data ...
+2022-09-27 19:25:12.910 +05:30 [DBG] Done attempting to bind parameter 'customerId' of type 'System.Nullable`1[System.Int32]'.
+2022-09-27 19:25:12.910 +05:30 [DBG] Done attempting to bind parameter 'customerId' of type 'System.Nullable`1[System.Int32]'.
+2022-09-27 19:25:12.910 +05:30 [DBG] Attempting to validate the bound parameter 'customerId' of type 'System.Nullable`1[System.Int32]' ...
+2022-09-27 19:25:12.911 +05:30 [DBG] Done attempting to validate the bound parameter 'customerId' of type 'System.Nullable`1[System.Int32]'.
+2022-09-27 19:25:12.912 +05:30 [INF] Get customer by id is commenced at :
+2022-09-27 19:25:12.991 +05:30 [INF] Customer Id is given as :2

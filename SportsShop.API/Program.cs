@@ -15,13 +15,7 @@ namespace SportsShop.API
     public class Program
     {
         public static void Main(string[] args)
-        {
-            //Log.Logger = new LoggerConfiguration()
-            //    .Enrich.FromLogContext()
-            //    .WriteTo.File($@"{Directory.GetCurrentDirectory()}",
-            //rollingInterval: RollingInterval.Day).CreateLogger();
-
-            
+        {   
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -31,12 +25,5 @@ namespace SportsShop.API
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-
-    //    var Logger = new LoggerConfiguration().MinimumLevel.Information()
-    //.WriteTo.File($@"{Directory.GetCurrentDirectory()}",
-    //rollingInterval: RollingInterval.Day)
-    //.CreateLogger();
-
-    //    builder.Logging.AddSerilog(Logger);
     }
 }
