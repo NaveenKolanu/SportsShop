@@ -21,52 +21,61 @@ namespace SportsShop.API.Controllers
         public IActionResult Get(int orderId)
         {
             ApiResponse apiRes = new ApiResponse();
-            ShopDBContext dbContext = new ShopDBContext();
-            if (orderId > 0)
+            try
             {
-                //Get Order info by OrderId
-                var dbOrder = dbContext.TblOrders.Find(orderId);
-
-                //Get Customer info by CustomerId
-                var dbCustomer = dbContext.TblCustomers.Find(dbOrder.CustomerId);
-
-                //Get Ordered Items associated with OrderId
-                var dbOrderedItems = dbContext.TblOrderedItems.Where(p => p.OrderId == orderId).ToList();
-               
-                //Get Complete Order Info
-                OrderDetailsViewModel orderDeatails = new OrderDetailsViewModel();
-                List<ProductViewModel> itemsDetails = new List<ProductViewModel>();
-                
-                orderDeatails.OrderId = dbOrder.OrderId;
-                orderDeatails.CustomerId = dbCustomer.CustomerId;
-                orderDeatails.CustomerName = dbCustomer.CustomerName;
-
-                foreach (var item in dbOrderedItems)
+                ShopDBContext dbContext = new ShopDBContext();
+                if (orderId > 0)
                 {
-                    //Get Product detail by ProductId
-                    var dbProduct = dbContext.TblProducts.Find(item.ProductId);
-                    
-                    ProductViewModel product = new ProductViewModel();
-                    product.ProductId = dbProduct.ProductId;
-                    product.ProductName = dbProduct.ProductName;
-                    product.ProductPrice = dbProduct.ProductPrice;
+                    //Get Order info by OrderId
+                    var dbOrder = dbContext.TblOrders.Find(orderId);
 
-                    product.ProductColor = dbProduct.ProductColor;
-                    product.ProductSize = dbProduct.ProductSize;
-                    
-                    //Add Product to OrderedProducts
-                    itemsDetails.Add(product);
+                    //Get Customer info by CustomerId
+                    var dbCustomer = dbContext.TblCustomers.Find(dbOrder.CustomerId);
+
+                    //Get Ordered Items associated with OrderId
+                    var dbOrderedItems = dbContext.TblOrderedItems.Where(p => p.OrderId == orderId).ToList();
+
+                    //Get Complete Order Info
+                    OrderDetailsViewModel orderDeatails = new OrderDetailsViewModel();
+                    List<ProductViewModel> itemsDetails = new List<ProductViewModel>();
+                    orderDeatails.OrderedAddress = dbOrder.OrderAddress;
+                    orderDeatails.OrderId = dbOrder.OrderId;
+                    orderDeatails.CustomerId = dbCustomer.CustomerId;
+                    orderDeatails.CustomerName = dbCustomer.CustomerName;
+
+                    foreach (var item in dbOrderedItems)
+                    {
+                        //Get Product detail by ProductId
+                        var dbProduct = dbContext.TblProducts.Find(item.ProductId);
+
+                        ProductViewModel product = new ProductViewModel();
+                        product.ProductId = dbProduct.ProductId;
+                        product.ProductName = dbProduct.ProductName;
+                        product.ProductPrice = dbProduct.ProductPrice;
+
+                        product.ProductColor = dbProduct.ProductColor;
+                        product.ProductSize = dbProduct.ProductSize;
+
+                        //Add Product to OrderedProducts
+                        itemsDetails.Add(product);
+                    }
+
+                    //Assign products
+                    orderDeatails.OrderedProducts = itemsDetails;
+
+                    apiRes.Result = orderDeatails;
+                    apiRes.IsValid = true;
+                    return Ok(apiRes);
                 }
-                
-                //Assign products
-                orderDeatails.OrderedProducts = itemsDetails;
-                
-                apiRes.Result = orderDeatails;
-                apiRes.IsValid = true;
-                return Ok(apiRes);
+                apiRes.ErrorMessage = $"{orderId}:Record Not Found";
+                apiRes.IsValid = false;
+
             }
-            apiRes.ErrorMessage = $"{orderId}:Record Not Found";
-            apiRes.IsValid = false;
+            catch (Exception ex)
+            {
+                apiRes.IsValid = false;
+                apiRes.ErrorMessage = ex.Message;
+            }
             return Ok(apiRes);
         }
 
@@ -74,70 +83,85 @@ namespace SportsShop.API.Controllers
         public IActionResult Post(SelectedItems items)
         {
             ApiResponse apiRes = new ApiResponse();
-            ShopDBContext dbContext = new ShopDBContext();
-            TblOrder tblOrder = new TblOrder();
-            var customer = dbContext.TblCustomers.Find(items.CustomerId);
-            if (customer==null)
+            try
             {
-                apiRes.IsValid = false;
-                apiRes.ErrorMessage = "Customer not found";
-                return Ok(apiRes);
-            }
-            tblOrder.CustomerId = customer.CustomerId; 
-            tblOrder.OrderAddress = items.OrderedAddress;
-            dbContext.Add(tblOrder);
-            dbContext.SaveChanges();
-            //Save Items
-            foreach (var prodId in items.SelectedProducts)
-            {
-                var product = dbContext.TblProducts.Find(prodId);
-                if(product==null)
+                ShopDBContext dbContext = new ShopDBContext();
+                TblOrder tblOrder = new TblOrder();
+                var customer = dbContext.TblCustomers.Find(items.CustomerId);
+                if (customer == null)
                 {
                     apiRes.IsValid = false;
-                    apiRes.ErrorMessage = "Product not found";
+                    apiRes.ErrorMessage = "Customer not found";
                     return Ok(apiRes);
                 }
-                TblOrderedItem tblOrderedItem = new TblOrderedItem();
-                tblOrderedItem.OrderId = tblOrder.OrderId;
-                tblOrderedItem.ProductId = product.ProductId;
+                tblOrder.CustomerId = customer.CustomerId;
+                tblOrder.OrderAddress = items.OrderedAddress;
+                dbContext.Add(tblOrder);
+                dbContext.SaveChanges();
+                //Save Items
+                foreach (var prodId in items.SelectedProducts)
+                {
+                    var product = dbContext.TblProducts.Find(prodId);
+                    if (product == null)
+                    {
+                        apiRes.IsValid = false;
+                        apiRes.ErrorMessage = "Product not found";
+                        return Ok(apiRes);
+                    }
+                    TblOrderedItem tblOrderedItem = new TblOrderedItem();
+                    tblOrderedItem.OrderId = tblOrder.OrderId;
+                    tblOrderedItem.ProductId = product.ProductId;
 
-                dbContext.Add(tblOrderedItem);
+                    dbContext.Add(tblOrderedItem);
+                }
+                //Save all items
+                apiRes.IsValid = true;
+                apiRes.Result = dbContext.SaveChanges();
             }
-            //Save all items
-            apiRes.IsValid = true;
-            apiRes.Result = dbContext.SaveChanges();
+            catch (Exception ex)
+            {
+                apiRes.IsValid = false;
+                apiRes.ErrorMessage = ex.Message;
+            }
             return Ok(apiRes);
         }
 
         [HttpDelete]
         public IActionResult Delete(int orderId)
         {
-            ApiResponse apiResp = new ApiResponse();
-            
-            ShopDBContext dbContext = new ShopDBContext();
-
-            //Get Child Record and Delete them first
-            var dbOrderedItems = dbContext.TblOrderedItems
-                .Where(p => p.OrderId == orderId).ToList();
-            if (dbOrderedItems != null && dbOrderedItems.Count > 0)
+            ApiResponse apiRes = new ApiResponse();
+            try
             {
-                dbContext.RemoveRange(dbOrderedItems);
-                var dbStatus = dbContext.SaveChanges();
-                if (dbStatus > 0)
-                {
-                    //Get Master Record and Delete it now
-                    var dbOrder = dbContext.TblOrders.Find(orderId);
-                    dbContext.Remove(dbOrder);
-                    var dbState = dbContext.SaveChanges();
-                    apiResp.IsValid = true;
-                    apiResp.StatusMessage = "Success";
+                ShopDBContext dbContext = new ShopDBContext();
 
-                    return Ok(apiResp);
+                //Get Child Record and Delete them first
+                var dbOrderedItems = dbContext.TblOrderedItems
+                    .Where(p => p.OrderId == orderId).ToList();
+                if (dbOrderedItems != null && dbOrderedItems.Count > 0)
+                {
+                    dbContext.RemoveRange(dbOrderedItems);
+                    var dbStatus = dbContext.SaveChanges();
+                    if (dbStatus > 0)
+                    {
+                        //Get Master Record and Delete it now
+                        var dbOrder = dbContext.TblOrders.Find(orderId);
+                        dbContext.Remove(dbOrder);
+                        var dbState = dbContext.SaveChanges();
+                        apiRes.IsValid = true;
+                        apiRes.StatusMessage = "Success";
+
+                        return Ok(apiRes);
+                    }
                 }
+                apiRes.IsValid = false;
+                apiRes.StatusMessage = "Failed";
             }
-            apiResp.IsValid = false;
-            apiResp.StatusMessage = "Failed";
-            return Ok(apiResp);
+            catch (Exception ex)
+            {
+                apiRes.IsValid = false;
+                apiRes.ErrorMessage = ex.Message;
+            }
+            return Ok(apiRes);
 
         }
 
@@ -145,22 +169,28 @@ namespace SportsShop.API.Controllers
         public IActionResult Put(TblOrder tblOrder)
         {
             ApiResponse apiRes = new ApiResponse();
-            ShopDBContext dbContext = new ShopDBContext();
-            var dbOrder = dbContext.TblOrders.Find(tblOrder.OrderId);
-            if (dbOrder == null) 
+            try
+            {
+                ShopDBContext dbContext = new ShopDBContext();
+                var dbOrder = dbContext.TblOrders.Find(tblOrder.OrderId);
+                if (dbOrder == null)
+                {
+                    apiRes.IsValid = false;
+                    apiRes.ErrorMessage = "Order not found";
+                    return Ok(apiRes);
+                }
+                dbOrder.CustomerId = tblOrder.CustomerId;
+                dbOrder.OrderAddress = tblOrder.OrderAddress;
+                dbContext.Update(dbOrder);
+                apiRes.IsValid = true;
+                apiRes.Result = dbContext.SaveChanges();
+            }
+            catch (Exception ex)
             {
                 apiRes.IsValid = false;
-                apiRes.ErrorMessage = "Order not found";
-                return Ok(apiRes);
+                apiRes.ErrorMessage = ex.Message;
             }
-            dbOrder.CustomerId = tblOrder.CustomerId;
-            dbOrder.OrderAddress = tblOrder.OrderAddress;
-            dbContext.Update(dbOrder);
-            apiRes.IsValid = true;
-            apiRes.Result = dbContext.SaveChanges();
             return Ok(apiRes);
-            //var dbState = dbContext.SaveChanges();
-            //return Ok(dbState);
 
         }
 
