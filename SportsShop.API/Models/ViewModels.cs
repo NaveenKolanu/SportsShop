@@ -19,6 +19,7 @@ namespace SportsShop.API.Models
         public int OrderId { get; set; }
         public int CustomerId { get; set; }
         public string CustomerName { get; set; }
+        public string OrderedAddress { get; set; }
         public List<ProductViewModel> OrderedProducts { get; set; }
     }
 
