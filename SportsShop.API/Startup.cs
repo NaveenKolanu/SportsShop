@@ -42,6 +42,8 @@ namespace SportsShop.API
                     Description = "API to expose Order, Product, Customer Management",
                 });
             });
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +54,10 @@ namespace SportsShop.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(options =>
+            options.AllowAnyHeader()
+                .AllowAnyMethod()
+                .WithOrigins(new string[] { "https://localhost:44325/", "https://localhost:44393/" }));
             app.UseHttpsRedirection();
 
             app.UseRouting();
