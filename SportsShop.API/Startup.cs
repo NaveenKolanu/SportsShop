@@ -55,9 +55,11 @@ namespace SportsShop.API
             }
 
             app.UseCors(options =>
-            options.AllowAnyHeader()
-                .AllowAnyMethod()
-                .WithOrigins(new string[] { "https://localhost:44325/", "https://localhost:44393/" }));
+            options.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                            .AllowAnyMethod());
+
+                //.WithOrigins(new string[] { "https://localhost:44325/", "https://localhost:44393/" }));
             app.UseHttpsRedirection();
 
             app.UseRouting();
