@@ -18,7 +18,7 @@ namespace SportsShop.API.Controllers
         //public const string FailedStatus = "Failed";
 
         [HttpGet]
-        public IActionResult Get(int orderId)
+        public IActionResult Get(int? orderId)
         {
             ApiResponse apiRes = new ApiResponse();
             try
@@ -33,7 +33,8 @@ namespace SportsShop.API.Controllers
                     var dbCustomer = dbContext.TblCustomers.Find(dbOrder.CustomerId);
 
                     //Get Ordered Items associated with OrderId
-                    var dbOrderedItems = dbContext.TblOrderedItems.Where(p => p.OrderId == orderId).ToList();
+                    var dbOrderedItems = dbContext.TblOrderedItems.
+                        Where(p => p.OrderId == orderId).ToList();
 
                     //Get Complete Order Info
                     OrderDetailsViewModel orderDeatails = new OrderDetailsViewModel();
@@ -67,15 +68,35 @@ namespace SportsShop.API.Controllers
                     apiRes.IsValid = true;
                     return Ok(apiRes);
                 }
+                else
+                {
+                    var dbOrders = dbContext.TblOrders.Include(p => p.Customer).ToList();
+                    List<OrderDetailsViewModel> orders = new List<OrderDetailsViewModel>();
+                    foreach (var order in dbOrders)
+                    {
+                        OrderDetailsViewModel orderDetails = new OrderDetailsViewModel();
+                        orderDetails.OrderId = order.OrderId;
+                        orderDetails.CustomerId = order.CustomerId;
+                        orderDetails.CustomerName = order.Customer.CustomerName;
+                        orderDetails.OrderedAddress = order.OrderAddress;
+                        orders.Add(orderDetails);
+                    }
+                    apiRes.Result = orders;
+                    apiRes.IsValid = true;
+                    return Ok(apiRes);
+
+                }
                 apiRes.ErrorMessage = $"{orderId}:Record Not Found";
                 apiRes.IsValid = false;
 
             }
+
             catch (Exception ex)
             {
                 apiRes.IsValid = false;
                 apiRes.ErrorMessage = ex.Message;
             }
+
             return Ok(apiRes);
         }
 
