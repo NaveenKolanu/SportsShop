@@ -14,7 +14,7 @@ namespace SportsShop.API.Controllers
     {
         [HttpGet]
 
-        public IActionResult Get(int? productId)
+        public IActionResult Get(int? productId, string productName)
         {
             ApiResponse apiRes = new ApiResponse();
             try
@@ -39,6 +39,23 @@ namespace SportsShop.API.Controllers
 
                     apiRes.IsValid = true;
                     apiRes.Result = productView;
+                    return Ok(apiRes);
+                }
+                else if (string.IsNullOrEmpty(productName) == false)
+                {
+                    var dbProd = dbContext.TblProducts.Where(p=>p.ProductName.ToLower().Contains(productName.ToLower())).ToList();
+                    foreach (var dbProduct in dbProd)
+                    {
+                        ProductViewModel productView = new ProductViewModel();
+                        productView.ProductId = dbProduct.ProductId;
+                        productView.ProductName = dbProduct.ProductName;
+                        productView.ProductPrice = dbProduct.ProductPrice;
+                        productView.ProductColor = dbProduct.ProductColor;
+                        productView.ProductSize = dbProduct.ProductSize;
+                        vmProducts.Add(productView);
+                    }
+                    apiRes.IsValid = true;
+                    apiRes.Result = vmProducts;
                     return Ok(apiRes);
                 }
                 var dbProducts = dbContext.TblProducts.ToList();

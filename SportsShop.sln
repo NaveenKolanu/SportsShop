@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32802.440
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsShop.API", "SportsShop.API\SportsShop.API.csproj", "{68B20D00-E190-4FDE-B48B-083D2812B6AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsShop.UnitTest", "SportsShop.UnitTest\SportsShop.UnitTest.csproj", "{C5B9BB6D-A351-4CFF-B937-D3E6EA0B60A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{68B20D00-E190-4FDE-B48B-083D2812B6AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68B20D00-E190-4FDE-B48B-083D2812B6AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68B20D00-E190-4FDE-B48B-083D2812B6AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5B9BB6D-A351-4CFF-B937-D3E6EA0B60A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5B9BB6D-A351-4CFF-B937-D3E6EA0B60A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5B9BB6D-A351-4CFF-B937-D3E6EA0B60A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5B9BB6D-A351-4CFF-B937-D3E6EA0B60A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
